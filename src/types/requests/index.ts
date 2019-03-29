@@ -1,1 +1,1 @@
-export * from './heroSearch';
+export * from './loadHeroes';

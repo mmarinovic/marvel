@@ -12,9 +12,15 @@ import App from './App';
 import reducers from './redux/reducers';
 import epics from './redux/epics';
 
-import * as NS from './namespace';
+import MarvelApi from './api/Marvel';
 
-const epicMiddleware = createEpicMiddleware<NS.Action>();
+import * as NS from './namespace';
+import * as APP from './types/app';
+
+const epicMiddleware = createEpicMiddleware<NS.Action, NS.Action, NS.IReduxState, APP.IDependencies>({
+    dependencies: { marvelApi: new MarvelApi() }
+});
+
 const store = createStore(reducers, applyMiddleware(epicMiddleware));
 
 epicMiddleware.run(epics);
