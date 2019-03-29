@@ -1,1 +1,1 @@
-export * from './loadHeroes';
+export * from './loadCharacters';

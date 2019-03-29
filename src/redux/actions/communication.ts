@@ -1,6 +1,16 @@
 import * as NS from '../../namespace';
-import { ILoadHeroesRequest } from '../../types/requests';
+import { ILoadCharactersRequest } from '../../types/requests';
+import { IPagedResponse } from '../../types/common';
+import { ICharacter } from '../../types/models/character';
 
-export function loadHeroes(payload: ILoadHeroesRequest) : NS.ILoadHeroes{
-    return { type: 'LOAD_HEROES', payload};
+export function loadCharacters(payload: ILoadCharactersRequest) : NS.ILoadCharacters{
+    return { type: 'LOAD_CHARACTERS', payload};
+}
+
+export function loadCharactersSuccess(payload: IPagedResponse<ICharacter[]>) : NS.ILoadCharactersSuccess{
+    return { type: 'LOAD_CHARACTERS_SUCCESS', payload };
+}
+
+export function loadCharactersFailed(payload: string) : NS.ILoadCharactersFailed{
+    return { type: 'LOAD_CHARACTERS_FAILED', payload };
 }
