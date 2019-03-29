@@ -3,7 +3,7 @@ import marvelConfig from '../config/marvelApi';
 import { ILoadCharactersRequest } from '../types/requests';
 import { convertMarvelCharacterToCharacter } from './convertors/marvel';
 import { IPagedResponse } from '../types/common';
-import { ICharacter } from '../types/models/character';
+import { ICharacter } from '../types/models';
 import { IMarvelCharactersResponse } from '../types/responses';
 
 export default class MarvelApi {
