@@ -17,8 +17,20 @@ export function selectSearchTerm(state: NS.IReduxState){
     return state.ui.searchTerm;
 }
 
-export const selectCharactersToDisplay = createSelector(
+export const selectExtendedPagedCharacters = createSelector(
     selectPagedCharacters,
+    selectBookmarkedCharacters,
+    (pagedCharacters, bookmarkedCharacters) => {
+        const bookmarkedIds = bookmarkedCharacters.map(b => b.id);
+        return pagedCharacters.map(p => {
+            p.isBookmarked = bookmarkedIds.includes(p.id);
+            return p;
+        })
+    }
+)
+
+export const selectCharactersToDisplay = createSelector(
+    selectExtendedPagedCharacters,
     selectBookmarkedCharacters,
     selectSearchTerm,
     (pagedCharacters, bookmarkedCharacters, searchTerm) => {
