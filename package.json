@@ -9,11 +9,14 @@
     "@types/react-dom": "16.8.3",
     "@types/react-redux": "^7.0.5",
     "axios": "^0.18.0",
+    "bem-cn": "^3.0.1",
+    "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.8",
     "redux-observable": "^1.1.0",
+    "reselect": "^4.0.0",
     "typescript": "3.3.4000"
   },
   "scripts": {

@@ -14,7 +14,3 @@ export function loadCharactersSuccess(payload: IPagedResponse<ICharacter[]>) : N
 export function loadCharactersFailed(payload: string) : NS.ILoadCharactersFailed{
     return { type: 'LOAD_CHARACTERS_FAILED', payload };
 }
-
-export function bookmarkCharacter(payload: string): NS.IBookmarkCharacter{
-    return { type: 'BOOKMARK_CHARACTER', payload };
-}

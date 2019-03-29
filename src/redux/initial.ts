@@ -5,5 +5,8 @@ export const initial: NS.IReduxState = {
         bookmarkedCharacters: [],
         pagedCharacters: [],
         totalCharactersCount: 0
+    },
+    ui: {
+        searchTerm: ''
     }
 }

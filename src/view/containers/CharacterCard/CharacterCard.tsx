@@ -1,4 +1,5 @@
 import React from 'react';
+import block from 'bem-cn';
 import { ICharacter } from '../../../types/models';
 
 import { bindActionCreators, AnyAction, Dispatch } from 'redux';
@@ -23,6 +24,8 @@ function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
 
 type IProps = IOwnProps & IDispatchProps;
 
+const b = block('order-creation-step');
+
 class CharacterCard extends React.PureComponent<IProps> {
     
     public render(){
@@ -32,12 +35,24 @@ class CharacterCard extends React.PureComponent<IProps> {
             <div>
                 <img src={character.imageUrl} />
                 <h4>{character.name}</h4>
-                <div>
-                    {character.isBookmarked}
-                </div>
+                {this.renderBookmark()}
             </div>
         )
     };
+
+    private renderBookmark(){
+        const { character } = this.props;
+        return (
+            <button onClick={this.toggleBookmark}>
+                {character.isBookmarked ? 'Remove from bookmarks' : 'Bookmark'}
+            </button>
+        );
+    }
+
+    private toggleBookmark = () => {
+        const { character, bookmarkCharacter } = this.props;
+        bookmarkCharacter(character);
+    }
 }
 
 export default connect(null, mapDispatch)(CharacterCard);

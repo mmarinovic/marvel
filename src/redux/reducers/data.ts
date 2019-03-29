@@ -11,7 +11,15 @@ export default function dataReducer(state: NS.IReduxState['data'] = initial.data
             };
         }
 
+        case 'BOOKMARK_CHARACTER': {
+            return {
+                ...state,
+                bookmarkedCharacters: [...state.bookmarkedCharacters, action.payload]
+            }
+        }
+        
         default: {
+            console.log(state)
             return state;
         }
     }
