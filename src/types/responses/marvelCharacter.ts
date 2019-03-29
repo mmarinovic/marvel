@@ -1,5 +1,5 @@
 export interface IMarvelCharacterResponse {
-    id: string;
+    id: number;
     name: string;
     thumbnail: {
         extension: string;

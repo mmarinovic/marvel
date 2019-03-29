@@ -13,18 +13,19 @@ interface IOwnProps {
 }
 
 interface IDispatchProps {
-    bookmarkCharacter: typeof actions.bookmarkCharacter
+    addToBookmarks: typeof actions.addToBookmarks,
+    removeFromBookmarks: typeof actions.removeFromBookmarks
 }
 
 function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
     return bindActionCreators({
-        bookmarkCharacter: actions.bookmarkCharacter
+        addToBookmarks: actions.addToBookmarks,
+        removeFromBookmarks: actions.removeFromBookmarks
     }, dispatch);
 }
 
 type IProps = IOwnProps & IDispatchProps;
 
-const b = block('order-creation-step');
 
 class CharacterCard extends React.PureComponent<IProps> {
     
@@ -50,8 +51,13 @@ class CharacterCard extends React.PureComponent<IProps> {
     }
 
     private toggleBookmark = () => {
-        const { character, bookmarkCharacter } = this.props;
-        bookmarkCharacter(character);
+        const { character, addToBookmarks, removeFromBookmarks } = this.props;
+        if(character.isBookmarked){
+            removeFromBookmarks(character.id);
+        }
+        else{
+            addToBookmarks(character);
+        }
     }
 }
 

@@ -1,6 +1,10 @@
 import * as NS from '../../namespace';
 import { ICharacter } from '../../types/models';
 
-export function bookmarkCharacter(payload: ICharacter): NS.IBookmarkCharacter{
-    return { type: 'BOOKMARK_CHARACTER', payload };
+export function addToBookmarks(payload: ICharacter): NS.IAddToBookmarks {
+    return { type: 'ADD_TO_BOOKMARK', payload };
+}
+
+export function removeFromBookmarks(payload: number): NS.IRemoveFromBookmarks {
+    return { type: 'REMOVE_FROM_BOOKMARKS', payload };
 }
