@@ -1,0 +1,30 @@
+@import '../../../styles/variables.scss';
+
+.search {
+    width: 500px;
+    padding: 20px;
+
+    input {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid rgba(255,255,255,0.7);
+        padding: 6px 12px;
+        color: $color-white;
+        font-size: 18px;
+    }
+
+    input:hover,
+    input:focus {
+        border-color: $color-marvel-red;
+        outline: none;
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+		width: 100%;
+        padding: 0px;
+        input {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+	}
+}

@@ -26,6 +26,7 @@ function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
 
 type IProps = IOwnProps & IDispatchProps;
 
+const b = block('character-card');
 
 class CharacterCard extends React.PureComponent<IProps> {
     
@@ -33,22 +34,19 @@ class CharacterCard extends React.PureComponent<IProps> {
         const { character } = this.props;
 
         return (
-            <div>
-                <img src={character.imageUrl} />
-                <h4>{character.name}</h4>
-                {this.renderBookmark()}
-            </div>
+            <article className={b()}>
+                <div className={b('holder')}>
+                    <div className={b('image')} style={{backgroundImage: `url(${character.imageUrl})`}}>
+                        <img src={character.imageUrl} />
+                    </div>
+                    <h2 className={b('title')}>{character.name}</h2>
+                    <span onClick={this.toggleBookmark} className={b('bookmarked')}>
+                        Bookmark
+                    </span>
+                </div>
+            </article>
         )
     };
-
-    private renderBookmark(){
-        const { character } = this.props;
-        return (
-            <button onClick={this.toggleBookmark}>
-                {character.isBookmarked ? 'Remove from bookmarks' : 'Bookmark'}
-            </button>
-        );
-    }
 
     private toggleBookmark = () => {
         const { character, addToBookmarks, removeFromBookmarks } = this.props;

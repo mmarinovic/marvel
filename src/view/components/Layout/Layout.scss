@@ -1,0 +1,57 @@
+@import '../../../styles/variables.scss';
+
+.layout {
+
+    header, footer {
+		padding: 20px;
+		background-color: $color-brown;
+    }
+    
+    header {
+		display: flex;
+		align-content: justify-content;
+		align-items: center;
+		width: 100%;
+    }
+    
+    footer {
+        text-align: center;
+        font-size: 12px;
+    }
+
+    h1 {
+		font-family: Roboto Condensed, Arial, sans-serif;
+		text-transform: uppercase;
+        font-size: 22px;
+        
+        &:after {
+            content: "";
+            width: 1px;
+            background-color: $color-white;
+            height: 30px;
+            display: inline-block;
+            margin-left: 20px;
+            position: relative;
+            bottom: -6px;
+        }
+	}
+	
+    &__logo {
+        padding-right: 10px;
+		cursor: pointer;
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+		header {
+			display: block;
+			text-align: center;
+		}
+    
+        h1 {
+            padding: 10px 0px;
+            &:after {
+                display: none;
+            }
+        }
+	}
+}

@@ -1,4 +1,6 @@
 .character-list {
-    display: grid;
-    grid-gap: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 10px;
 }
