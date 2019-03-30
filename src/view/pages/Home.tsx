@@ -26,7 +26,7 @@ type IProps = IDispatchProps & IStateProps;
 function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
     return bindActionCreators({
         loadCharacters: actions.loadCharacters,
-        resetCharacters: actions.resetCharacters
+        resetCharacters: actions.resetCharacters,
     }, dispatch);
 }
 
@@ -58,11 +58,14 @@ class Home extends React.PureComponent<IProps> {
         const { loadCharacters, resetCharacters }  = this.props;
 
         resetCharacters();
-        loadCharacters({
-            limit: 20,
-            offset: 0,
-            searchTerm: searchTerm
-        });
+
+        if(searchTerm){
+            loadCharacters({
+                limit: 20,
+                offset: 0,
+                searchTerm: searchTerm
+            });
+        }
     }
 }
 

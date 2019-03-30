@@ -23,7 +23,7 @@ export default class MarvelApi {
             limit: request.limit,
             offset: request.offset
         }});
-        console.log(response);
+        
         return {
             total: response.data.data.total,
             data: response.data.data.results.map(convertMarvelCharacterToCharacter)
