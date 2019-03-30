@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 
 import * as NS from '../../namespace';
 
-import './Home.scss';
 import { ICharacter } from '../../types/models';
 import CharacterList from '../components/CharacterList/CharacterList';
 import Layout from '../components/Layout/Layout';
+import Pagination from '../components/Pagination/Pagination';
+
+import './Home.scss';
 
 interface IDispatchProps {
     loadCharacters: typeof actions.loadCharacters;
@@ -40,16 +42,21 @@ function mapStateToProps(state: NS.IReduxState){
 
 class Home extends React.PureComponent<IProps> {
 
+    pageLimit = 20;
+
     public componentWillReceiveProps({ searchTerm }: IProps){
         if(searchTerm !== this.props.searchTerm)
             this.onSearchTermChange(searchTerm);
     }
 
     public render(){
-        const { characters } = this.props;
+        const { characters, totalCharactersCount } = this.props;
         return (
             <Layout>
                 <CharacterList characters={characters} />
+                <Pagination totalCount={totalCharactersCount} 
+                            onPageSelected={this.onPageSelected} 
+                            limit={this.pageLimit}/>
             </Layout>
         )
     }
@@ -61,11 +68,20 @@ class Home extends React.PureComponent<IProps> {
 
         if(searchTerm){
             loadCharacters({
-                limit: 20,
+                limit: this.pageLimit,
                 offset: 0,
                 searchTerm: searchTerm
             });
         }
+    }
+
+    onPageSelected = (page: number) => {
+        const { loadCharacters, resetCharacters, searchTerm }  = this.props;
+        loadCharacters({
+            limit: this.pageLimit,
+            offset: (page-1) * this.pageLimit,
+            searchTerm: searchTerm
+        });
     }
 }
 

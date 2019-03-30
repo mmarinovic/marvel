@@ -41,7 +41,7 @@ class CharacterCard extends React.PureComponent<IProps> {
                     </div>
                     <h2 className={b('title')}>{character.name}</h2>
                     <span onClick={this.toggleBookmark} className={b('bookmarked')}>
-                        Bookmark
+                        {character.isBookmarked ? 'Remove bookmark': 'Add bookmark'}
                     </span>
                 </div>
             </article>
