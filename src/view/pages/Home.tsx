@@ -55,7 +55,7 @@ class Home extends React.PureComponent<IProps> {
         setSearchTerm(searchTerm);
         
         loadCharacters({
-            limit: 10,
+            limit: 20,
             offset: 0,
             searchTerm: searchTerm
         });
