@@ -34,6 +34,14 @@ export default function dataReducer(state: NS.IReduxState['data'] = initial.data
 
             return newState;
         }
+
+        case 'RESET_CHARACTERS': {
+            return {
+                ...state,
+                pagedCharacters: [],
+                totalCharactersCount: 0
+            }
+        }
         
         default: {
             console.log(state)

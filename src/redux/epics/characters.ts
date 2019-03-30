@@ -9,6 +9,7 @@ import { AnyAction } from "redux";
 
 export default function loadCharactersEpic(action$: ActionsObservable<AnyAction>, _: any, { marvelApi }: APP.IDependencies) {
   const loadCharactersType: NS.ILoadCharacters['type'] = 'LOAD_CHARACTERS';
+  
   return action$.pipe(
     ofType(loadCharactersType),
     switchMap(({ payload }) => 
