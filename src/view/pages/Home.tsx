@@ -12,6 +12,7 @@ import Layout from '../components/Layout/Layout';
 
 interface IDispatchProps {
     loadCharacters: typeof actions.loadCharacters;
+    resetCharacters: typeof actions.resetCharacters;
 }
 
 interface IStateProps{
@@ -25,6 +26,7 @@ type IProps = IDispatchProps & IStateProps;
 function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
     return bindActionCreators({
         loadCharacters: actions.loadCharacters,
+        resetCharacters: actions.resetCharacters
     }, dispatch);
 }
 
@@ -53,8 +55,9 @@ class Home extends React.PureComponent<IProps> {
     }
 
     onSearchTermChange = (searchTerm: string)  =>{
-        const { loadCharacters }  = this.props;
+        const { loadCharacters, resetCharacters }  = this.props;
 
+        resetCharacters();
         loadCharacters({
             limit: 20,
             offset: 0,

@@ -1,5 +1,5 @@
 import { createEpicMiddleware } from 'redux-observable';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, AnyAction } from 'redux';
 
 import MarvelApi from '../api/Marvel';
 import reducers from '../redux/reducers';
@@ -10,7 +10,7 @@ import * as APP from '../types/app';
 import { saveState, loadState } from '../localStorage';
 import { initial } from './initial';
 
-const epicMiddleware = createEpicMiddleware<NS.Action, NS.Action, NS.IReduxState, APP.IDependencies>({
+const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, NS.IReduxState, APP.IDependencies>({
     dependencies: { marvelApi: new MarvelApi() }
 });
 

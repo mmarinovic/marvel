@@ -5,14 +5,15 @@ import * as NS from '../../namespace';
 import * as APP from '../../types/app';
 import { ILoadCharactersRequest } from "../../types/requests";
 import { from, of } from "rxjs";
+import { AnyAction } from "redux";
 
-export default function loadCharactersEpic(action$: ActionsObservable<NS.Action>, _: any, { marvelApi }: APP.IDependencies) {
+export default function loadCharactersEpic(action$: ActionsObservable<AnyAction>, _: any, { marvelApi }: APP.IDependencies) {
+  const loadCharactersType: NS.ILoadCharacters['type'] = 'LOAD_CHARACTERS';
   return action$.pipe(
-    ofType('LOAD_CHARACTERS'),
+    ofType(loadCharactersType),
     switchMap(({ payload }) => 
       from(marvelApi.loadCharacters(payload as ILoadCharactersRequest)).pipe(
           map((response: any) =>{
-            console.log(response)
             return loadCharactersSuccess(response);
           }),
           catchError((error: any) => of(loadCharactersFailed(error)))

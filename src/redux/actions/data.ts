@@ -8,3 +8,7 @@ export function addToBookmarks(payload: ICharacter): NS.IAddToBookmarks {
 export function removeFromBookmarks(payload: number): NS.IRemoveFromBookmarks {
     return { type: 'REMOVE_FROM_BOOKMARKS', payload };
 }
+
+export function resetCharacters(): NS.IResetCharacters {
+    return { type: 'RESET_CHARACTERS' };
+}
