@@ -29,7 +29,7 @@ type IProps = IDispatchProps & IOwnProps;
 
 const b = block('search');
 
-class Search extends React.PureComponent<IProps> {
+export class Search extends React.PureComponent<IProps> {
     
     onChange$ = new Subject<string>();
     input: HTMLInputElement | null = null;

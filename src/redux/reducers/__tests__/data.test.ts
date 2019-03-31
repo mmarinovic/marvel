@@ -9,8 +9,8 @@ describe('data reducer', () => {
 
     let state = initial.data;
 
-    const spiderMan: ICharacter = { id: 1, imageUrl: 'dummy', name: 'Spider man' };
-    const ironMan: ICharacter = { id: 2, imageUrl: 'dummy', name: 'Iron man' };
+    const spiderMan: ICharacter = { id: 1, imageUrl: 'dummy', name: 'Spider-Man' };
+    const ironMan: ICharacter = { id: 2, imageUrl: 'dummy', name: 'Iron-Man' };
 
     it('should return the initial state', () => {
         const newState = dataReducer(undefined, <any>{});

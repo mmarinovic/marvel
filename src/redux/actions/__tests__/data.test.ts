@@ -5,7 +5,7 @@ import { ICharacter } from '../../../types/models';
 describe('data actions', () => {
 
     it('should create add to bookmark action', () => {
-        const payload: ICharacter = { id: 1, imageUrl: 'dummy', name: 'Spider man' };
+        const payload: ICharacter = { id: 1, imageUrl: 'dummy', name: 'Spider-Man' };
         const expectedAction: NS.IAddToBookmarks = { type: 'ADD_TO_BOOKMARK', payload };
 
         expect(actions.addToBookmarks(payload)).toEqual(expectedAction)

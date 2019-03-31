@@ -13,7 +13,7 @@ describe('ui reducer', () => {
 
     it('should handle set search term', () => {
         const setSearchTermType: NS.ISetSearchTerm['type'] = 'SET_SEARCH_TERM';
-        const setSearchTermPayload: string = 'Spider man';
+        const setSearchTermPayload: string = 'Spider-Man';
 
         const expectedState: NS.IReduxState['ui'] = {
             ...state,

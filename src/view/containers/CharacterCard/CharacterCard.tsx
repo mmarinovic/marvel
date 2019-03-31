@@ -28,7 +28,7 @@ type IProps = IOwnProps & IDispatchProps;
 
 const b = block('character-card');
 
-class CharacterCard extends React.PureComponent<IProps> {
+export class CharacterCard extends React.PureComponent<IProps> {
     
     public render(){
         const { character } = this.props;

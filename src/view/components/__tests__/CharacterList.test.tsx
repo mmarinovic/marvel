@@ -11,8 +11,8 @@ describe('<CharacterList />', () => {
 
     it('should render N character card components', () => {
         const characters: ICharacter[] = [
-            { id: 1, imageUrl: 'dummy', name: 'Spider man' },
-            { id: 2, imageUrl: 'dummy', name: 'Iron man' }
+            { id: 1, imageUrl: 'dummy', name: 'Spider-Man' },
+            { id: 2, imageUrl: 'dummy', name: 'Iron-Man' }
         ];
 
         const wrapper = shallow(<CharacterList characters={characters} />);
