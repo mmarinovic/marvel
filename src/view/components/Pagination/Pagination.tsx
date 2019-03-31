@@ -31,7 +31,10 @@ class Pagination extends React.PureComponent<IOwnProps, IState>{
 
     private renderPages(){
         const { totalCount, limit } = this.props;
+        
         const numberOfPages = Math.ceil(totalCount / limit);
+        if(numberOfPages < 2)
+            return '';
 
         return (
             <ul>
