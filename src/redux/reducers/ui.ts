@@ -10,6 +10,21 @@ export default function uiReducer(state: NS.IReduxState['ui'] = initial.ui, acti
             };
         }
 
+        case 'LOAD_CHARACTERS': {
+            return {
+                ...state,
+                isLoading: true
+            }
+        }
+
+        case 'LOAD_CHARACTERS_FAILED':
+        case 'LOAD_CHARACTERS_SUCCESS': {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        
         default: {
             return state;
         }

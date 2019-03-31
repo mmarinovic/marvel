@@ -7,6 +7,7 @@ export const initial: NS.IReduxState = {
         totalCharactersCount: 0
     },
     ui: {
-        searchTerm: ''
+        searchTerm: '',
+        isLoading: false
     }
 }

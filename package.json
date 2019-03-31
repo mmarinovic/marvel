@@ -9,6 +9,7 @@
     "@types/react-dom": "16.8.3",
     "@types/react-redux": "^7.0.5",
     "axios": "^0.18.0",
+    "axios-observable": "^1.0.7",
     "bem-cn": "^3.0.1",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",

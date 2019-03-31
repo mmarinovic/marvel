@@ -9,6 +9,10 @@ export function removeFromBookmarks(payload: number): NS.IRemoveFromBookmarks {
     return { type: 'REMOVE_FROM_BOOKMARKS', payload };
 }
 
-export function resetCharacters(): NS.IResetCharacters {
-    return { type: 'RESET_CHARACTERS' };
+export function resetLoadedCharacters(): NS.IResetLoadedCharacters {
+    return { type: 'RESET_LOADED_CHARACTERS' };
+}
+
+export function clearLoadedCharacters(): NS.IClearLoadedCharacters {
+    return { type: 'CLEAR_LOADED_CHARACTERS' };
 }

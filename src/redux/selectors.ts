@@ -17,6 +17,10 @@ export function selectSearchTerm(state: NS.IReduxState){
     return state.ui.searchTerm;
 }
 
+export function selectIsLoading(state: NS.IReduxState){
+    return state.ui.isLoading;
+}
+
 export const selectExtendedPagedCharacters = createSelector(
     selectPagedCharacters,
     selectBookmarkedCharacters,

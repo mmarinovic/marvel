@@ -1,12 +1,13 @@
 import React from 'react';
 import block from 'bem-cn';
-import {ReactComponent as Logo }  from '../../../logo.svg';
+import {ReactComponent as Logo }  from '../../../assets/logo.svg';
 import Search from '../../containers/Search/Search';
 
 import './Layout.scss';
 
 interface IOwnProps {
     children: any;
+    onLogoClicked?: Function;
 }
 
 const b = block('layout');
@@ -18,7 +19,7 @@ class Layout extends React.PureComponent<IOwnProps>{
         return (
             <div className={b()}>
                 <header>
-                    <div className={b('logo')}>
+                    <div className={b('logo')} onClick={this.handleLogoClick}>
                         <Logo />
                     </div>
                     <h1>Characters</h1>
@@ -34,6 +35,11 @@ class Layout extends React.PureComponent<IOwnProps>{
                 </footer>
             </div>
         );
+    }
+
+    private handleLogoClick = () => {
+        const { onLogoClicked } = this.props;
+        onLogoClicked && onLogoClicked();
     }
 }
 

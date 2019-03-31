@@ -4,7 +4,7 @@ import { switchMap, map, catchError, debounceTime } from 'rxjs/operators';
 import * as NS from '../../namespace';
 import * as APP from '../../types/app';
 import { ILoadCharactersRequest } from "../../types/requests";
-import { from, of } from "rxjs";
+import { of } from "rxjs";
 import { AnyAction } from "redux";
 
 export default function loadCharactersEpic(action$: ActionsObservable<AnyAction>, _: any, { marvelApi }: APP.IDependencies) {
@@ -14,7 +14,7 @@ export default function loadCharactersEpic(action$: ActionsObservable<AnyAction>
     ofType(loadCharactersType),
     debounceTime(500),
     switchMap(({ payload }) => 
-      from(marvelApi.loadCharacters(payload as ILoadCharactersRequest)).pipe(
+      marvelApi.loadCharacters(payload as ILoadCharactersRequest).pipe(
           map((response: any) =>{
             return loadCharactersSuccess(response);
           }),

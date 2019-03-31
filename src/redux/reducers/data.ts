@@ -35,7 +35,14 @@ export default function dataReducer(state: NS.IReduxState['data'] = initial.data
             return newState;
         }
 
-        case 'RESET_CHARACTERS': {
+        case 'CLEAR_LOADED_CHARACTERS': {
+            return {
+                ...state,
+                pagedCharacters: [],
+            }
+        }
+
+        case 'RESET_LOADED_CHARACTERS': {
             return {
                 ...state,
                 pagedCharacters: [],
