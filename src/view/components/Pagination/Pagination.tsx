@@ -52,8 +52,10 @@ class Pagination extends React.PureComponent<IOwnProps, IState>{
 
     private selectPage(page: number){
         const { onPageSelected } = this.props;
-        this.setState({ page });
-        onPageSelected(page);
+        if(this.state.page !== page){
+            this.setState({ page });
+            onPageSelected(page);
+        }
     }
 }
 

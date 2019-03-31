@@ -65,19 +65,21 @@ class Home extends React.PureComponent<IProps> {
     }
 
     public render(){
-        const { totalCharactersCount, isLoading } = this.props;
+        const { totalCharactersCount } = this.props;
         return (
             <Layout onLogoClicked={this.onLogoClicked}>
                 <div className={b()}>
-                    {this.renderContent()}
-                    
+                    {this.renderList()}
+                    <Pagination totalCount={totalCharactersCount} 
+                                onPageSelected={this.onPageSelected} 
+                                limit={this.pageLimit}/>
                 </div>
             </Layout>
         )
     }
 
-    private renderContent(){
-        const { characters, isLoading, totalCharactersCount } = this.props;
+    private renderList(){
+        const { characters, isLoading } = this.props;
 
         if(isLoading){
             return (
@@ -96,14 +98,7 @@ class Home extends React.PureComponent<IProps> {
             );
         }
 
-        return (
-                <div>
-                    <CharacterList characters={characters} />
-                    <Pagination totalCount={totalCharactersCount} 
-                                            onPageSelected={this.onPageSelected} 
-                                            limit={this.pageLimit}/>
-                </div>
-       );
+        return <CharacterList characters={characters} />;
     }
 
     onLogoClicked = () => {
