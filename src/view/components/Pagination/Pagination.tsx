@@ -29,7 +29,7 @@ class Pagination extends React.PureComponent<IOwnProps, IState>{
         );
     }
 
-    private renderPages(){
+    renderPages(){
         const { totalCount, limit } = this.props;
         
         const numberOfPages = Math.ceil(totalCount / limit);
@@ -53,7 +53,7 @@ class Pagination extends React.PureComponent<IOwnProps, IState>{
         )
     }
 
-    private selectPage(page: number){
+    selectPage(page: number){
         const { onPageSelected } = this.props;
         if(this.state.page !== page){
             this.setState({ page });

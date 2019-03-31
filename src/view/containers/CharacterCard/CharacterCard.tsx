@@ -48,7 +48,7 @@ export class CharacterCard extends React.PureComponent<IProps> {
         )
     };
 
-    private toggleBookmark = () => {
+    toggleBookmark = () => {
         const { character, addToBookmarks, removeFromBookmarks } = this.props;
         if(character.isBookmarked){
             removeFromBookmarks(character.id);

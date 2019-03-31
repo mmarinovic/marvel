@@ -56,7 +56,7 @@ export class Search extends React.PureComponent<IProps> {
         )
     };
 
-    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.onChange$.next(e.target.value);
     }
 }

@@ -50,7 +50,7 @@ function mapStateToProps(state: NS.IReduxState){
 
 const b = block('home');
 
-class Home extends React.PureComponent<IProps> {
+export class Home extends React.PureComponent<IProps> {
 
     pageLimit = 20;
 
@@ -78,7 +78,7 @@ class Home extends React.PureComponent<IProps> {
         )
     }
 
-    private renderList(){
+    renderList(){
         const { characters, isLoading } = this.props;
 
         if(isLoading){
