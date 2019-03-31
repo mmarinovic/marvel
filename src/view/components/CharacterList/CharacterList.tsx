@@ -8,7 +8,6 @@ import block from 'bem-cn';
 
 interface IOwnProps {
     characters: ICharacter[];
-    placeholder?: string;
 }
 
 const b = block('character-list');

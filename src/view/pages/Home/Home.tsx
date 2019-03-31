@@ -1,15 +1,15 @@
 import React from 'react';
-import { actions, selectors } from '../../redux';
+import { actions, selectors } from '../../../redux';
 import { bindActionCreators, Dispatch, AnyAction } from 'redux';
 import { connect } from 'react-redux';
-import {ReactComponent as Loader }  from '../../assets/loader.svg';
+import { ReactComponent as Loader } from '../../../assets/loader.svg';
 
-import * as NS from '../../namespace';
+import * as NS from '../../../namespace';
 
-import { ICharacter } from '../../types/models';
-import CharacterList from '../components/CharacterList/CharacterList';
-import Layout from '../components/Layout/Layout';
-import Pagination from '../components/Pagination/Pagination';
+import { ICharacter } from '../../../types/models';
+import CharacterList from '../../components/CharacterList/CharacterList';
+import Layout from '../../components/Layout/Layout';
+import Pagination from '../../components/Pagination/Pagination';
 import block from 'bem-cn';
 
 import './Home.scss';
