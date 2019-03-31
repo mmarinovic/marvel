@@ -18,6 +18,7 @@ interface IDispatchProps {
     loadCharacters: typeof actions.loadCharacters;
     resetLoadedCharacters: typeof actions.resetLoadedCharacters;
     clearLoadedCharacters: typeof actions.clearLoadedCharacters;
+    setSearchterm: typeof actions.setSearchterm;
 }
 
 interface IStateProps{
@@ -33,7 +34,8 @@ function mapDispatch(dispatch: Dispatch<AnyAction>): IDispatchProps{
     return bindActionCreators({
         loadCharacters: actions.loadCharacters,
         resetLoadedCharacters: actions.resetLoadedCharacters,
-        clearLoadedCharacters: actions.clearLoadedCharacters
+        clearLoadedCharacters: actions.clearLoadedCharacters,
+        setSearchterm: actions.setSearchterm
     }, dispatch);
 }
 
@@ -65,7 +67,7 @@ class Home extends React.PureComponent<IProps> {
     public render(){
         const { characters, totalCharactersCount, isLoading } = this.props;
         return (
-            <Layout>
+            <Layout onLogoClicked={this.onLogoClicked}>
                 <div className={b()}>
                     <CharacterList characters={characters} />
                     {isLoading && (
@@ -81,6 +83,11 @@ class Home extends React.PureComponent<IProps> {
                 </div>
             </Layout>
         )
+    }
+
+    onLogoClicked = () => {
+        const { setSearchterm } = this.props;
+        setSearchterm('');
     }
 
     onSearchTermChange = (searchTerm: string)  =>{

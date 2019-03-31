@@ -51,7 +51,6 @@ export default function dataReducer(state: NS.IReduxState['data'] = initial.data
         }
         
         default: {
-            console.log(state)
             return state;
         }
     }

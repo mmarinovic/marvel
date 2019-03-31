@@ -12,18 +12,18 @@
             padding: 8px;
             display: inline-block;
             cursor: pointer;
-            background-color: rgba(230, 36, 41, 0.2);
+            background-color: rgba($color-marvel-red, 0.2);
             transition: ease-in-out 200ms background-color;
             min-width: 30px;
             text-align: Center;
 
             &:hover {
                 transition: ease-in-out 200ms background-color;
-                background-color: rgba(230, 36, 41, 0.8);
+                background-color: rgba($color-marvel-red, 0.8);
             }
 
             &.active {
-                background-color: rgba(230, 36, 41, 0.8);
+                background-color: rgba($color-marvel-red, 0.8);
             }
         }
     }
