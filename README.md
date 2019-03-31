@@ -1,5 +1,3 @@
-## Marvel Heroes
-
 ## Getting Started
 
 Install dependencies:
