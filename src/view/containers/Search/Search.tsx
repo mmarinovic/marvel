@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AnyAction, bindActionCreators, Dispatch } from 'redux';
-import { actions, selectors } from '../../../redux';
+import { actions } from '../../../redux';
 
-import * as NS from '../../../namespace';
+
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import './Search.scss';
+import block from 'bem-cn';
 
 interface IOwnProps {
     placeholder?: string;
@@ -15,39 +18,47 @@ interface IDispatchProps {
     setSearchTerm: typeof actions.setSearchterm;
 }
 
-interface IStateProps {
-    searchTerm: string;
-}
-
 function mapDispatchToProps(dispatch: Dispatch<AnyAction>): IDispatchProps {
     return bindActionCreators({
         setSearchTerm: actions.setSearchterm
     }, dispatch);
 }
 
-function mapStateToProps(state: NS.IReduxState): IStateProps{
-    return {
-        searchTerm: selectors.selectSearchTerm(state)
-    }
-}
 
-type IProps = IDispatchProps & IOwnProps & IStateProps;
+type IProps = IDispatchProps & IOwnProps;
+
+const b = block('search');
 
 class Search extends React.PureComponent<IProps> {
     
+    onChange$ = new Subject<string>();
+    input: HTMLInputElement | null = null;
+
+    public componentDidMount(){
+        const { setSearchTerm } = this.props;
+        this.onChange$
+            .pipe(debounceTime(300))
+            .subscribe(searchTerm => {
+                setSearchTerm(searchTerm)
+            });
+    }
+
+    public componentWillUnmount(){
+        this.onChange$.unsubscribe();
+    }
+
     public render(){
-        const { placeholder, searchTerm } = this.props;
+        const { placeholder } = this.props;
         return (
-            <div>
-                <input type="text" value={searchTerm} placeholder={placeholder} onChange={this.onChange} />
+            <div className={b()}>
+                <input type="text" placeholder={placeholder} onChange={this.onChange} />
             </div>
         )
     };
 
     private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { setSearchTerm } = this.props;
-        setSearchTerm(e.target.value);
+        this.onChange$.next(e.target.value);
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);

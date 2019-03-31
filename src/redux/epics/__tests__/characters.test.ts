@@ -39,7 +39,7 @@ describe('charcters epic', () => {
           
             const output$ = loadCharactersEpic(action$, state$, dependencies);
             
-            expectObservable(output$).toBe('--- 500ms a', {
+            expectObservable(output$).toBe('---a', {
               a: loadCharactersSuccessAction
             });
           });

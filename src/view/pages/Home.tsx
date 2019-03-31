@@ -67,7 +67,7 @@ class Home extends React.PureComponent<IProps> {
     public render(){
         const { totalCharactersCount } = this.props;
         return (
-            <Layout onLogoClicked={this.onLogoClicked}>
+            <Layout>
                 <div className={b()}>
                     {this.renderList()}
                     <Pagination totalCount={totalCharactersCount} 
@@ -99,11 +99,6 @@ class Home extends React.PureComponent<IProps> {
         }
 
         return <CharacterList characters={characters} />;
-    }
-
-    onLogoClicked = () => {
-        const { setSearchterm } = this.props;
-        setSearchterm('');
     }
 
     onSearchTermChange = (searchTerm: string)  =>{

@@ -7,7 +7,6 @@ import './Layout.scss';
 
 interface IOwnProps {
     children: any;
-    onLogoClicked?: Function;
 }
 
 const b = block('layout');
@@ -19,13 +18,11 @@ class Layout extends React.PureComponent<IOwnProps>{
         return (
             <div className={b()}>
                 <header>
-                    <div className={b('logo')} onClick={this.handleLogoClick}>
+                    <div className={b('logo')}>
                         <Logo />
                     </div>
                     <h1>Characters</h1>
-                    <div className="search">
-                        <Search placeholder="Search characters" />
-                    </div>
+                    <Search placeholder="Search characters" />
                 </header>
 
                 {children}
@@ -35,11 +32,6 @@ class Layout extends React.PureComponent<IOwnProps>{
                 </footer>
             </div>
         );
-    }
-
-    private handleLogoClick = () => {
-        const { onLogoClicked } = this.props;
-        onLogoClicked && onLogoClicked();
     }
 }
 
