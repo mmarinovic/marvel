@@ -17,7 +17,7 @@ class CharacterList extends React.PureComponent<IOwnProps> {
     
     public render(){
         const { characters } = this.props;
-
+        
         return (
             <div className={b()}>
                 {

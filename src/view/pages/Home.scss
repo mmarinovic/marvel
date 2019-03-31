@@ -2,4 +2,13 @@
     &__loader-holder {
         text-align: center;
     }
+
+    &__placeholder {
+        text-align: center;
+        padding: 20px;
+
+        h2 {
+            padding: 10px 0px;
+        }
+    }
 }

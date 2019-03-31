@@ -65,24 +65,45 @@ class Home extends React.PureComponent<IProps> {
     }
 
     public render(){
-        const { characters, totalCharactersCount, isLoading } = this.props;
+        const { totalCharactersCount, isLoading } = this.props;
         return (
             <Layout onLogoClicked={this.onLogoClicked}>
                 <div className={b()}>
-                    <CharacterList characters={characters} />
-                    {isLoading && (
-                        <div className={b('loader-holder')} >
-                            <Loader />
-                        </div>
-                    )
-                    }
+                    {this.renderContent()}
                     
-                    <Pagination totalCount={totalCharactersCount} 
-                                onPageSelected={this.onPageSelected} 
-                                limit={this.pageLimit}/>
                 </div>
             </Layout>
         )
+    }
+
+    private renderContent(){
+        const { characters, isLoading, totalCharactersCount } = this.props;
+
+        if(isLoading){
+            return (
+                <div className={b('loader-holder')} >
+                    <Loader />
+                </div>
+            );
+        }
+        
+        if(!characters.length) {
+            return (
+                <div className={b('placeholder')}>
+                    <h2>No characters to display</h2>
+                    <p>Search and bookmark your favorite characters!</p>
+                </div>
+            );
+        }
+
+        return (
+                <div>
+                    <CharacterList characters={characters} />
+                    <Pagination totalCount={totalCharactersCount} 
+                                            onPageSelected={this.onPageSelected} 
+                                            limit={this.pageLimit}/>
+                </div>
+       );
     }
 
     onLogoClicked = () => {
