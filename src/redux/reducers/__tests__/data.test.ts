@@ -5,7 +5,6 @@ import { initial } from '../../initial';
 import { IPagedResponse } from '../../../types/common';
 import { ICharacter } from '../../../types/models';
 
-
 describe('data reducer', () => {
 
     let state = initial.data;
