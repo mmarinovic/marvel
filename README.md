@@ -39,7 +39,7 @@ Core part of the application is structured in two folders:
 ##### src/redux
 Redux folder contains actions, reducers, epics and selectors.
 * Actions can be used for data manipulation or communication with epics. Actions used for communication with epics are put in communications.ts and data manipulation actions are put into a file dependending on which part of the state they manipulate.
-* Reducers listen for actions and manipulate parts of the state. State is split into data and ui. Data contains persistable data like marvel characters and ui holds flags like isLoading or search term.
+* Reducers listen for actions and manipulate parts of the state. State is split into data and ui. Data contains persistable data like marvel characters and ui holds flags for loader and other ui related items.
 * Epics are redux-observable primitives which take a stream of actions and return a stream of actions. Epics are used for loading marvel charactes in this case
 * Selectors are used to provide easy access to certain part of the state. There is a selector for each of the state data items.
 
