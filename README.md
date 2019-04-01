@@ -29,7 +29,7 @@ Automatic deployment from master branch is setup on my Heroku account. Pushing n
 ## Project overview
 
 #### Technologies used
-- typescript, react,redux, redux observable, axios, jest, enzyme, sinon, scss
+- typescript, react, redux, redux observable, axios, jest, enzyme, sinon, scss
 
 #### Arhitecture
 Core part of the application is structured in two folders:
